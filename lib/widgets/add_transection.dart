@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AddTransection extends StatelessWidget {
+class AddTransection extends StatefulWidget {
   final Function addTransection;
 
   AddTransection(this.addTransection);
 
+  @override
+  State<AddTransection> createState() => _AddTransectionState();
+}
+
+class _AddTransectionState extends State<AddTransection> {
   final titleController = TextEditingController();
+
   final amountController = TextEditingController();
 
   void addTx() {
@@ -16,10 +22,11 @@ class AddTransection extends StatelessWidget {
       return;
     }
 
-    addTransection(
+    widget.addTransection(
       enteredTitleValue,
       enteredAmountValue,
     );
+    Navigator.of(context).pop();
   }
 
   @override
